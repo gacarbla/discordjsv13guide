@@ -19,20 +19,18 @@ const client = new Discord.Client({
     ]
 });
 
+const { prefix, token } = require("./03-prefix in json.json")
+
 client.on('ready', () => {
     console.log(`Estoy listo!`);
 });
 
 client.on('message', (message) => {
-    const prefix = "!"
     if (message.author.bot) return
     if (message.content.startsWith(prefix + 'ping')) {
-        var embed = new Discord.MessageEmbed()
-            .setDescription("Pong 🏓")
-            .setColor(0x5865f2)
-        message.channel.send({ embeds: [embed] });
+        message.channel.send({ content: `Pong 🏓` });
     }
 
 });
 
-client.login('TokenSecreto');
+client.login(token);

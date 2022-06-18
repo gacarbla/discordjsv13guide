@@ -323,3 +323,25 @@ Si en su consola aparecio un mensaje "*Estoy listo!*" generado por el evento rea
 
 ### ¿Que sigue?
 Usted tiene desarrollado un BOT básico para discord, es hora de comenzar a agregar nuevas características!.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Uso de un prefix (simbolo indentificador)
+Usted puede ser que haya visto en muchos bots que responden a los comandos con un prefix unico y específicio. Ya sea un signo de exclamación `!`, un signo de `+`, un signo de interrogación `?` u otros carácteres. Esto es muy útil para:
+
+En primer lugar, si no utiliza un prefix único y tiene más de un BOT en un servidor, ambos responderán a los mismos comandos.
+
+En segundo lugar, en el ejemplo basico su BOT responden cuando el mensaje comienza con `ping` que son 4 caracteres, esto significa que la siguiente frase provocará la respuesta del BOT.
+
+Para evitar todo estos casos se usa un prefix unico, vamos a crear un prefix, así como la capacidad de cambiar el prefix cuando guste desde un solo lugar.
+
+Bien, hay dos formas de poder crear y usar una variable como prefix:
+
+    1. Creando una varible dentro del mismo archivo de su bot como prefix.
+    2. Dividir en partes la configuración de variables, creando un archivo `json`
+
+Vamos por la forma mas recomendada, en crear un archivo `.json` para nuestra configuración de variables.
