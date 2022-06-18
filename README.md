@@ -261,6 +261,8 @@ const client = new Discord.Client({
 >
 > NOTA IMPORTANTE: Algunos intents requieren de permisos especiales en la consola de aplicaciones de Discord. Si desea activarlos, puede encontrarlos en la pestaña "Bot" de la consola de [Discord Developers](https://discord.com/developers/applications)
 
+<br>
+
 Despues, agregamos las siguientes lineas de codigo debajo de las variables creadas anteriormente.
 
 ```js
@@ -285,9 +287,24 @@ client.login('TokenSecreto');
 > Utilizamos tambien el evento "*messageCreate*", "*messageCreate*" es el manejador de los mensajes y argumentos de un servidor, detro del mismo podemos crear comandos(funciones/tareas) para su BOT. Un ejemplo basico es el comando ping. dentro de una condicion if() basica.
 
 <br>
+
+Bien, luego de agregar las lineas de codigo, ahora reemplace en la linea del metodo client.login("TokenSecreto") por el Token de su BOT. Para encontrarlo, diríjase a la pestaña "bot" de la consola de [Discord Developers](https://discord.com/developers/applications) y observará un botón denominado "Reset Token", al hacer click sobre éste se le mostrará una "contraseña", un código identificador, se trata de su token secreto, no lo revele nunda a nadie.
+
+![gif](media/tokegif.gif)
+
+Por ultimo guardar todo su codigo agregado, utilizando la tecla `CONTROL + S`
+
+<br>
 <br>
 <br>
 <br>
 <br>
 
-###
+### Activación del BOT
+La manera de activar un BOT mendiante la consola de windows, es ingresando a la ruta de la carpeta de su BOT. y utilizar el comando de nodejs llamada `node`, mas el nombre del archivo de su bot.
+
+> Ejemplo: `node mybot.js` ó `node mybot` sin la extenciòn .js, las dos formas generan la misma acción.
+
+![gif](media/mybotactivadogif.gif)
+
+Si en su consola aparecio un mensaje "*Estoy listo!*" generado por el evento ready, su BOT estara conectado en su servidor invitado.
