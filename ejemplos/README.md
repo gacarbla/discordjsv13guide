@@ -36,3 +36,13 @@ Aquí aplicaremos lo aprendido en la [práctica 03](#establecer-el-prefijo-en-un
 
 [➕ 04-complete json.js](04-complete%20json.js)<br>
 [➕ 04-complete json.json](04-complete%20json.json)
+
+<br>
+<br>
+<br>
+
+### Creando mi primer embed
+En esta ocasión crearemos un embed que responda al comando `!ping`, para hacerlo un poco más bonito.
+
+[➕ 05-embed simple.js](05-embed%20simple.js)<br>
+[➕ 05-embed simple.json](05-embed%20simple.json)
