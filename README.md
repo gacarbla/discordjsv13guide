@@ -1,9 +1,5 @@
 ## Guía Discord.js V13.8.0 básico
 
-```diff
-- ADVERTENCIA: Página en mantenimiento -
-```
-
 ## Antes de empezar
 Usted esta por ver código(script) del lenguaje de programación JavaScript (JS), para desarrollar un bot con discord.js, deberías tener un conocimiento bastante decente del propio JavaScript. Si bien puedes hacer un bot con muy poco conocimiento de programación y JavaScript, tratar de hacerlo sin entender solo te dificultará y quedarse estancado en muchos problemas que para otros sean fáciles.
 
@@ -16,15 +12,65 @@ Recomendamos firmemente escribir el código a mano mientras sigues los capitulos
 <br>
 <br>
 
-<div align="center">
-    <kbd>
-        <br>
-        <a href="pasos\faq.md">Siguiente página</a>
-        <br>
-        <img src="">
-    </kbd>
-</div>
+<h2 align="center">¡VAMOS ALLÁ!</h2>
 
+### FAQ (Prguntas frecuentes)
+
+<br>
+
+#### ¿Por qué me aparece un error en la última línea de mi código? 
+> Respuesta: este error suele pasar porque no cerraste bien algún comando anterior, fíjate si te faltó algún paréntesis ) o alguna llave } o corchete ] por cerrar, este error suele ser muy común cuando estás empezando.
+
+![imágen](media/faq-llaves.png)
+
+<br>
+
+#### ¿Por qué me aparece este error en mi consola cuando ejecuto mi bot?
+```txt
+message is not defined
+```
+> Respuesta: es por que no has definido o puesto dentro del evento message.
+
+<br>
+
+#### ¿Por qué me aparece este error en mi consola cuando ejecuto mi bot?
+```txt
+args is not defined
+```
+> Respuesta: es porque no has definido la variable 'args' dentro del evento message.
+
+<br>
+
+#### ¿Cómo puedo hacer que solo yo pueda usar X comando?
+```js
+//Respuesta:
+if (message.author.id !== 'IDUSUARIO') return;
+```
+> Agregamos esta condicional dentro de un comando para validar que solo pueda ser usado por el usuario que fue agregando en 'IDUSUARO'.
+
+<br>
+
+#### ¿Cómo puedo enviar un mensaje con el BOT al privado(MD) de un usuario?
+```js
+//Respuesta:
+client.users.resolve('IDUSUARIO').send({content: 'MENSAJE'})
+```
+> Usamos la colección client.users y usando el método get(), ingresamos el id del usuario 'IDUSUARO', para luego usando el método send() enviar el mensaje.
+
+<br>
+
+#### ¿Cómo puedo enviar un mensaje a un canal determinado?
+```js
+//Respuesta:
+client.channels.resolvet('IDCANAL').send({content: 'MENSAJE A ENVIAR'});
+```
+> Usamos la colección client.channels y usando el método get(), ingresamos el id del canal 'IDCANAL', para luego usando el método send() enviar el mensaje determinado.
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Editor de código
 Un buen editor de código nos ayudará a simplificar y mejorar su código legible, nos dirá donde están los errores, validar y en algunos ejecutar su código por usted.
@@ -120,3 +166,128 @@ Una vez hayamos seleccionado todas las opciones, en la línea inferior se deber�
 <br>
 
 ### Instalación de Discord.js y Node.js
+Para usar discord.js y empezar a programar necesitará un par de cosas instaladas. Por lo menos:
+- Mínimo: node.js versión 14 o superior.
+- Tener un editor de código real. Si no tienen instalado un editor de código ir a la [Instalación editor de código](#editor-de-código)
+
+<br>
+
+#### Instalación de Nodejs
+Node es un entorno de ejecución para JavaScript, usa un modelo de operaciones E/S sin bloqueo y orientado a eventos, que lo hace liviano y eficiente.
+
+Para instalar Node, vamos a la siguiente página web [Nodejs.org](https://nodejs.org/es/).<br>
+Descargar la versión recomendada e instalar en su PC. (Reinicié su PC si es necesario)
+
+<br>
+
+#### Preparando el entorno de programación para su BOT
+Una vez que tenga el software requerido, el siguiente paso es preparar un espacio para empezar a programar.
+
+- Crear una carpeta en el escritorio o en una unidad de disco duro o partición.
+- Darle un nombre a la carpeta (Ejm. BOT, BotDiscord, MyBOT, etc.).
+- Una vez que haya creado una carpeta, abrir la consola (interfaz de línea de comandos) con al ruta de la carpeta.
+
+![imágen](media/consola.png)
+
+Si no pudo abrir la consola con la ruta, sigue estos pasos: (en Windows)
+- Presionar la tecla de `Windows(⊞ Win) + R y escribir` "cmd", luego clic en Aceptar para abrir la consola.
+
+![imágen](media/ejecutarCMD.png)
+
+- Una vez dentro de la consola escribir lo siguiente: cd desktop\MyBOT (MyBOT es el nombre de la carpeta creada).
+
+Listo, ahora vayamos al siguiente paso.
+
+#### Instalación de Discord.js
+Una vez dentro de la consola con la ruta de la carpeta, vamos a instalar Discord.js.
+
+Pero primero vamos a inicializar esta carpeta con node y npm (NPM = Node Package Manager - Administrador de paquetes/librerias para node), esto asegurará que cualquier otro módulo instalado se instale dentro de la carpeta creada.
+
+Si queremos ver la información de NPMs de nuestro bot podremos usar `npm init -y` pero en esta ocasión instalaremos un NPM por medio de `npm -i --save <nombre>`.
+
+Vamos a instalar el [NPM de discord.js](https://www.npmjs.com/package/discord.js), para ello emplearemos `npm -i --save discord.js`.
+
+> NOTA: `--save` o `--s` es para asegurar que se guarde en el package.json que creamos anteriormente. 
+
+La instalación es muy rápida y mostrará el proceso de la instalacián en la pantalla de la consola.
+
+Una vez completada la instalación de Discord.js, nos fijamos en la carpeta y se dará cuenta de que hay una nueva carpeta creada llamada node_modules. Esto contiene todos los paquetes instalados para el funcionamiento de Discord.js.
+
+Significa que Discord.js se ha instalado correctamente. ¡Bien hecho! Ahora vayamos a poner en marcha su primer BOT.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### En marcha mi primer bot
+Empezamos a codificar los eventos y funciones para desarrollar su BOT, con una estructura basica de inicio.
+
+- Abrir la carpeta de su BOT creado, con Visual Studio Code o con el editor que tenga instalado.
+- Crear un nuevo archivo y darle un nombre con la extencion .js (archivo JavaScript).
+- Ejemplos: mybot.js, bot.js, app.js, etc. (Para esta guía utilizaré mybot.js)
+
+![gif](media/mybotgif.gif)
+
+Luego de crear el archivo para su BOT, dentro del archivo agregamos las siguientes lineas de codigo:
+```js
+const Discord = require("discord.js");
+const client = new Discord.Client({
+  intents: [
+    "GUILDS",
+    "DIRECT_MESSAGES",
+    "GUILD_MEMBERS",
+    "DIRECT_MESSAGE_REACTIONS"  ,
+    "GUILD_BANS",
+    "DIRECT_MESSAGE_TYPING"     ,
+    "GUILD_EMOJIS_AND_STICKERS",
+    "GUILD_INTEGRATIONS",
+    "GUILD_WEBHOOKS",
+    "GUILD_INVITES",
+    "GUILD_VOICE_STATES",
+    "GUILD_PRESENCES",
+    "GUILD_MESSAGES",
+    "GUILD_MESSAGE_REACTIONS",
+    "GUILD_MESSAGE_TYPING",
+  ]
+});
+```
+> **Descripción del código agregado** <br>
+> 
+> `const` crea una variable/constante llamada "*Discord*" para referenciar el modulo npm discord.js instalado anteriormente.
+> 
+> `const` crea la constante "*client*" para instanciar una nueva clase Client() de la variable Discord referenciado, client representa a la clase Client() que es el eje principal para interactuar con la API de Discord, y el punto de partida para cualquier BOT en discordjs. Dentro de ésta indicamos los intents que el bot poseerá, es decir, las acciones que el bot podrá leer.>
+>
+> NOTA IMPORTANTE: Algunos intents requieren de permisos especiales en la consola de aplicaciones de Discord. Si desea activarlos, puede encontrarlos en la pestaña "Bot" de la consola de [Discord Developers](https://discord.com/developers/applications)
+
+Despues, agregamos las siguientes lineas de codigo debajo de las variables creadas anteriormente.
+
+```js
+client.on('ready', () => {
+   console.log(`Estoy listo!`);
+});
+
+client.on('message', (message) => {
+  if(message.content.startsWith('ping')) {
+    message.channel.send(`pong 🏓!!`);
+  }
+
+});
+
+client.login('TokenSecreto');
+```
+
+> **DESCRIPCIÓN DEL CÓDIGO:**
+> 
+> En la primera linea la varible "*client*" activa el evento llamado "*ready*", "*ready*" es el evento de inicio cuando se activa un BOT en discord.js, se puede ingresar un mensaje o funcion que se ejecutara cuando el BOT se aya activado correctamente.
+> 
+> Utilizamos tambien el evento "*messageCreate*", "*messageCreate*" es el manejador de los mensajes y argumentos de un servidor, detro del mismo podemos crear comandos(funciones/tareas) para su BOT. Un ejemplo basico es el comando ping. dentro de una condicion if() basica.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+###
