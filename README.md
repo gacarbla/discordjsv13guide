@@ -308,3 +308,18 @@ La manera de activar un BOT mendiante la consola de windows, es ingresando a la 
 ![gif](media/mybotactivadogif.gif)
 
 Si en su consola aparecio un mensaje "*Estoy listo!*" generado por el evento ready, su BOT estara conectado en su servidor invitado.
+
+**¡Genial!** Su bot esta listo para responder a todas sus órdenes, en el ejemplo de la estructura basica su BOT respondera con un mensaje "*pong!*", a cualquier mensaje que empiece exactamente con "*ping*" del evento message, vamos a comprobarlo.
+
+![gif](media/pingcomando.gif)
+
+¡Éxito tienes tu BOT ejecutándose!, ahora podras crear muchas funciones/tareas y comandos para su BOT. La activación de su primer BOT se ha completado.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### ¿Que sigue?
+Usted tiene desarrollado un BOT básico para discord, es hora de comenzar a agregar nuevas características!.
