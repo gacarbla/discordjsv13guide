@@ -341,7 +341,145 @@ Para evitar todo estos casos se usa un prefix unico, vamos a crear un prefix, as
 
 Bien, hay dos formas de poder crear y usar una variable como prefix:
 
-    1. Creando una varible dentro del mismo archivo de su bot como prefix.
-    2. Dividir en partes la configuración de variables, creando un archivo `json`
+1. Creando una varible dentro del mismo archivo de su bot como prefix.
+2. Dividir en partes la configuración de variables, creando un archivo `json`
 
 Vamos por la forma mas recomendada, en crear un archivo `.json` para nuestra configuración de variables.
+
+<br>
+
+#### Creando un archivo json para nuestra variables
+Crear un nuevo archivo dentro de la carpeta del bot y darle el nombre de `config.json` (`.json` es la extención del archivo).
+
+![gif](media/configjsongif.gif)
+
+JSON, son notaciones de objetos para javascript, mas información en [json.org](https://www.json.org/json-es.html)
+
+
+Ahora que ya hemos creado el archivo de configuración hay 2 cosas de inicio que podemos agregar al archivo, son:
+
+- El token de su BOT
+- El prefix de su BOT
+
+Asi como otros datos que considere de prioridad unica durante el desarrollo.<br>
+Agregar las siguientes lineas de configuración dentro del archivo `.json` creado.
+
+```json
+{
+  "token":"tokenSecreto",
+  "prefix":"!"
+}
+```
+
+Despues de agregar usted puede cambiar el objeto prefix con el simbolo para el prefix de su BOT, para el ejemplo usare el simbolo `!` como prefix. Tambien copie el token de su BOT en el objeto token del archivo de configuración.
+
+Guarde la configuración usando `CONTROL + S`
+
+<br>
+
+#### Referenciando el archivo de configuración json
+-------------------------------------------------------------------
+#### OPCIÓN 1
+Nos dirigimos a la parte superior del archivo de su BOT (`mybot.js`), agregamos una nueva línea de codigo para referenciar al archivo `config.json` mediante una constante.
+```js
+const config = require("./config.json");
+```
+
+> **DESCRIPCIÓN DEL CÓDIGO:**
+> 
+> `const` crea una constante con el nombre `config` para referenciar al archivo de configuración `config.json` creado anteriormente.
+> 
+> Ahora usted utilizara la constante `config` para llamar a los objetos que estan dentro del archivo de configuración `config.json`.
+> - Para llamar o utilizar el objeto prefix escribimos: `config.prefix`
+> - Para llamar o utilizar el objeto token escribimos: `config.token`
+
+##### Usando la constante de configuración 'config'
+Vamos a usar la constante `config` que representa el archivo de configuración, primero cambiamos el token llamando al objeto token mediante la constante `config`.
+
+La linea de nuestro bot se ve así:
+```js
+client.login("MzASfasFWf_asdASDKKW-SFASfasFWf#f3KKsds51.sDSd");
+```
+Usando config y el objeto token seria así:
+```js
+client.login(config.token);
+```
+Listo, la otra linea que tenemos que agregar es el objeto prefix, vamos a la linea de nuestro codigo debajo de config y agregamos el prefix creando una nueva variable para los comandos, de esta forma:
+```js
+let prefix = config.prefix;
+```
+Despues de agregar y referenciar nuestro archivo de configuración `config.json` a nuestro BOT, esto se deberia de ver así:
+```js
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const config = require("./config.json");
+
+let prefix = config.prefix;
+
+client.on('ready', () => {
+   console.log(`Estoy listo!`);
+});
+
+client.on('message', (message) => {
+  if(message.content.startsWith(prefix + 'ping')) {
+    message.channel.send(`pong 🏓!!`);
+  }
+
+});
+
+client.login(config.token);
+```
+<br>
+
+-------------------------------------------------------------------
+
+#### OPCIÓN 2
+Nos dirigimos a la parte superior del archivo de su BOT (`mybot.js`), agregamos una nueva línea de codigo para referenciar al archivo `config.json` mediante una constante.
+```js
+const { prefix, token } = require("./config.json");
+```
+
+> **DESCRIPCIÓN DEL CÓDIGO:**
+> 
+> `const` crea dos constantes con los nombre `prefix` y `token` que harán referencia al objeto que tenga el mismo nombre en el archivo `config.json` creado anteriormente.
+> 
+> - Para llamar o utilizar el objeto prefix escribimos: `prefix`
+> - Para llamar o utilizar el objeto token escribimos: `token`
+
+##### Usando las constantes de configuración
+
+Vamos a usar las constantes `prefix` y `token` que representan los datos que queremos obtener del archivo `config.json`
+
+La linea de nuestro bot se ve así:
+```js
+client.login("MzASfasFWf_asdASDKKW-SFASfasFWf#f3KKsds51.sDSd");
+```
+Usando config y el objeto token seria así:
+```js
+client.login(token);
+```
+Despues de todo esto, nuestro código debería quedar así:
+```js
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const { prefix, token } = require("./config.json");
+
+client.on('ready', () => {
+   console.log(`Estoy listo!`);
+});
+
+client.on('message', (message) => {
+  if(message.content.startsWith(prefix + 'ping')) {
+    message.channel.send(`pong 🏓!!`);
+  }
+
+});
+
+client.login(token);
+```
+
+-------------------------------------------------------------------
+
+Ahora agregamos un nuevo comando de ejemplo basico para probar con el nuevo prefix
+
+<br>
