@@ -32,7 +32,7 @@ Con estos dos archivos podrás ver un ejemplo de un dato que requerimos en un ar
 <br>
 
 ### Establecer los datos del bot en un archivo `.json`
-Aquí aplicaremos lo aprendido en la [práctica 03](#establecer-el-prefijo-en-un-archivo-json) para establecer el prefijo y el token en un archivo `.json`.
+Aquí aplicaremos lo aprendido en la [práctica 03](#establecer-el-prefijo-en-un-archivo-json) para establecer el prefijo y el token en un mismo archivo `.json`.
 
 [➕ 04-complete json.js](04-complete%20json.js)<br>
 [➕ 04-complete json.json](04-complete%20json.json)
