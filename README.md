@@ -62,7 +62,7 @@ client.users.resolve('IDUSUARIO').send({content: 'MENSAJE'})
 #### ¿Cómo puedo enviar un mensaje a un canal determinado?
 ```js
 //Respuesta:
-client.channels.resolvet('IDCANAL').send({content: 'MENSAJE A ENVIAR'});
+client.channels.resolve('IDCANAL').send({content: 'MENSAJE A ENVIAR'});
 ```
 > Usamos la colección client.channels y usando el método get(), ingresamos el id del canal 'IDCANAL', para luego usando el método send() enviar el mensaje determinado.
 
